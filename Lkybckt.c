@@ -1,29 +1,26 @@
 #include<stdio.h>
-int main()
-{
-int incoming,n,outgoing,buffersize,store=0,drop;
-printf("\n enter number of packets");
-scanf("%d",&n);
-printf("\n enter a outgoing packets");
-scanf("%d",&outgoing);
-printf("\n enter a buffersize:");
-scanf("%d",&buffersize);
-while(n!=0)
-{
-printf("\n enter a incoming value:");
-scanf("%d",&incoming);
-	if(incoming<=(buffersize-store))
-      {
-       store+=incoming;
-      }
-        else
-            {
-            printf("\n packet is dropped %d",incoming-(buffersize-store));
-             store=buffersize;
-             }
-             printf("\n Buffer size is %d  out of %d  \n",store,buffersize);
-     store=store-outgoing;
-printf("After outgoing  %d packet  left in buffer \n",store);
-       n--;
-      }
+void main(){
+	int inc,out,buf_siz,store=0,n;
+	printf("Enter the number of packets:\t");
+	scanf("%d",&n);
+	printf("Enter the Outgoing range:\t");
+	scanf("%d",&out);
+	
+	printf("Enter the Buffer size:\t");
+	scanf("%d",&buf_siz);
+	while(n!=0){
+		printf("Incoming packet..\t");
+		scanf("%d",&inc);
+		if(inc<=(buf_siz-store))
+		{
+			store+=inc;
+			printf("Bucket Buffer size %d out of %d\n",store,buf_siz);
+		}else{
+			printf("dropped %d\n",inc-(buf_siz-store));
+			store=buf_siz;
+		}
+		store=store-out;
+		printf("Stored value%d\n",store);
+		n--;
+	}
 }
